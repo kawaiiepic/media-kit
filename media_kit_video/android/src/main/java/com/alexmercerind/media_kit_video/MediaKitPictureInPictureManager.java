@@ -8,6 +8,7 @@
 package com.alexmercerind.media_kit_video;
 
 import android.app.Activity;
+import androidx.activity.ComponentActivity;
 import android.app.PictureInPictureParams;
 import android.os.Build;
 import android.util.Log;
