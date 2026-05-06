@@ -209,7 +209,10 @@ final class MediaKitPictureInPictureManager {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || activity == null) {
             return;
         }
-        activity.addOnPictureInPictureModeChangedListener(info -> {
+        if (!(activity instanceof ComponentActivity)) {
+            return; // bail out safely instead of crashing
+        }
+        ((ComponentActivity) activity).addOnPictureInPictureModeChangedListener(info -> {
             if (info.isInPictureInPictureMode()) {
                 dispatchEvent("didStart", null);
             } else {
